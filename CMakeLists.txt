@@ -6,7 +6,7 @@ set(CMAKE_C_STANDARD          17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS        OFF)
 
-set(MLD_LIB libmld)
+set(MLD_LIB mld)
 set(TEST_APP test_app)
 
 set(HEADER_DIR ${CMAKE_SOURCE_DIR}/include)

@@ -29,7 +29,7 @@ main(int argc, char** argv) {
 
     /*Step 1 : Initialize a new structure database */
     struct_db_t* struct_db = calloc(1, sizeof(struct_db_t));
-    //mld_init_primitive_data_types_support(struct_db);
+    mld_init_primitive_data_types_support(struct_db);
 
     /*Step 2 : Create structure record for structure emp_t*/
     static field_info_t emp_fields[] = {
@@ -57,29 +57,30 @@ main(int argc, char** argv) {
 
 
 
-    ///*Working with object database*/
-    ///*Step 1 : Initialize a new Object database */
-    //object_db_t* object_db = calloc(1, sizeof(object_db_t));
-    //object_db->struct_db = struct_db;
+    /*Working with object database*/
+    /*Step 1 : Initialize a new Object database */
+    object_db_t* object_db = calloc(1, sizeof(object_db_t));
+    object_db->struct_db = struct_db;
 
-    ///*Step 2 : Create some sample objects, equivalent to standard
-    // * calloc(1, sizeof(student_t))*/
-    //student_t* abhishek = xcalloc(object_db, "student_t", 1);
-    //mld_set_dynamic_object_as_root(object_db, abhishek);
+    /*Step 2 : Create some sample objects, equivalent to standard
+     * calloc(1, sizeof(student_t))*/
+    student_t* abhishek = xcalloc(object_db, "student_t", 1);
+    mld_set_dynamic_object_as_root(object_db, abhishek);
 
-    //student_t* shivani = xcalloc(object_db, "student_t", 1);
-    //strncpy(shivani->stud_name, "shivani", strlen("shivani"));
-    ////abhishek->best_colleage = shivani;
+    student_t* shivani = xcalloc(object_db, "student_t", 1);
+    strncpy(shivani->stud_name, "shivani", strlen("shivani"));
+    //abhishek->best_colleage = shivani;
 
-    //emp_t* joseph = xcalloc(object_db, "emp_t", 2);
+    emp_t* joseph = xcalloc(object_db, "emp_t", 2);
     //mld_set_dynamic_object_as_root(object_db, joseph);
-    //joseph->p = xcalloc(object_db, "int", 1);
+    joseph->p = xcalloc(object_db, "int", 1);
+    joseph->p = NULL;
 
-    //print_object_db(object_db);
+    print_object_db(object_db);
 
-    //run_mld_algorithm(object_db);
-    //printf("Leaked Objects : \n");
-    //report_leaked_objects(object_db);
+    run_mld_algorithm(object_db);
+    printf("Leaked Objects : \n");
+    report_leaked_objects(object_db);
 
     return 0;
 }
